@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminPanel\HomeController AS AdminHomeController;
 use App\Http\Controllers\SampleController AS SampleController ;
 
 /*
@@ -14,16 +15,24 @@ use App\Http\Controllers\SampleController AS SampleController ;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//1 - Do something in route
-Route::get('/hello', function () {
-    return 'Hello World!';
-});
-// 2- Call view in route
+
+//USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS 
+//USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS 
+//USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS 
+//USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS USER CONTROLLERS 
+
+
 Route::get('/',[HomeController::class,'index'])->name('home');
-// 3- Call controller function in route
-Route::get('/sample_home',[SampleController::class,'index'])->name('sample_home');
-// 4- Route->Controller->View
-Route::get('/sample_app',[SampleController::class,'sample_app'])->name('sample_app');
+
+
+//ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
+//ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
+//ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
+//ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
+
+
+Route::get('/admin',[AdminHomeController::class,'index'])->name('admin');
+
 
 Route::middleware([
     'auth:sanctum',
