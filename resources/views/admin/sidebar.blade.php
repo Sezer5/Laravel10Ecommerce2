@@ -26,13 +26,22 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-              </ul>
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Categories</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('admin.category.index')}}"><i class="fa fa-circle-o"></i> Categories</a></li>
+                    <li><a href="{{route('admin.category.create')}}"><i class="fa fa-circle-o"></i>Create Category</a></li>
+                </ul>
+            </li>
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Products</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('admin.product.index')}}"><i class="fa fa-circle-o"></i> Products</a></li>
+                    <li><a href="{{route('admin.product.create')}}"><i class="fa fa-circle-o"></i>Create Product</a></li>
+                </ul>
             </li>
             <li class="treeview">
               <a href="#">
