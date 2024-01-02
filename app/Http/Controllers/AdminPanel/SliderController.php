@@ -1,26 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminPanel;
 
 use App\Models\Slider;
-use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
-class HomeController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-        
-        $active_slider = DB::table('sliders')->first();
-        $other_slider = Slider::all()->skip(1);
-        $products=Product::all();
-        return view('home.index', ['active_slider' => $active_slider,'other_slider'=>$other_slider,'products'=>$products]);
-        
+        $data=Slider::all();
+        return view("admin.sliders.index",[
+            'data' => $data
+        ]);
     }
 
     /**
@@ -28,7 +25,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.sliders.create");
     }
 
     /**
@@ -36,7 +33,17 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=new Slider();
+       
+        $data->title = $request->title;
+        $data->title_second = $request->title_second;
+        $data->button = $request->button;
+        $data->description = $request->description;
+        if($request->file('image')){
+            $data->image=$request->file('image')->store('public/images');
+        };
+        $data->save();
+        return redirect('admin/sliders');
     }
 
     /**
@@ -68,6 +75,9 @@ class HomeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data=Slider::find($id);
+        Storage::delete($data->image);
+        $data->delete();
+        return redirect('admin/sliders');
     }
 }

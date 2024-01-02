@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\ImageController;
+use App\Http\Controllers\AdminPanel\SliderController;
 use App\Http\Controllers\AdminPanel\ProductController;
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\SampleController AS SampleController ;
@@ -70,6 +71,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/show/{id}','show')->name('show');
         Route::post('/store/{id}','store')->name('store');
         Route::get('/destroy/{id}','destroy')->name('destroy');
+    });
+
+//SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS 
+//SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS 
+//SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS 
+//SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS SLIDERS 
+
+ Route::prefix('/sliders')->name('sliders.')->controller(SliderController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/create','create')->name('create');
+        Route::post('/store','store')->name('store');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+        
     });
 });
 
