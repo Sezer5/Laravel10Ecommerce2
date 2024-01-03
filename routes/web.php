@@ -27,6 +27,7 @@ use App\Http\Controllers\AdminPanel\HomeController AS AdminHomeController;
 
 
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/productdetail/{id}',[HomeController::class,'productdetail'])->name('productdetail');
 
 
 //ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 

@@ -70,4 +70,14 @@ class HomeController extends Controller
     {
         //
     }
+
+    public function productdetail(string $id)
+    {
+        $data=Product::find($id);
+        $gallery = DB::table('images')->where('product_id', '=', $id)->get();
+        return view("home.productdetail ",[
+            'data' => $data,
+            'gallery' => $gallery
+        ]);
+    }
 }

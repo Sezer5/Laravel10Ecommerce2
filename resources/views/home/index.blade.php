@@ -25,7 +25,7 @@
 											<div class="overlay-content">
 												<h2>$56</h2>
 												<p>{{$rs->title}}</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View</a>
+												<a href="{{route('productdetail',['id'=>$rs->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View</a>
 											</div>
 										</div>
 								</div>
