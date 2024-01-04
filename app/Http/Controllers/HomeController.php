@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,6 +13,11 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public static function maincategorylist(){
+        return Category::where('parent_Id','=',0)->with('children')->get();
+    }
+
     public function index()
     {
         //
