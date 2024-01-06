@@ -66,8 +66,8 @@
               </ul>
             </li>
             <li>
-              <a href="../widgets.html">
-                <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">Hot</small>
+              <a href="{{route('admin.settings.index')}}">
+                <i class="fa fa-th"></i> <span>Settings</span> <small class="label pull-right bg-green">Hot</small>
               </a>
             </li>            
           </ul>

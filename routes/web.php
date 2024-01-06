@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\SliderController;
 use App\Http\Controllers\AdminPanel\ProductController;
 use App\Http\Controllers\AdminPanel\CategoryController;
+use App\Http\Controllers\AdminPanel\SettingsController;
 use App\Http\Controllers\SampleController AS SampleController ;
 use App\Http\Controllers\AdminPanel\HomeController AS AdminHomeController;
 
@@ -27,6 +28,9 @@ use App\Http\Controllers\AdminPanel\HomeController AS AdminHomeController;
 
 
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/loginuser',[HomeController::class,'loginuser'])->name('loginuser');
+Route::get('/register',[HomeController::class,'register'])->name('register');
+Route::get('/logoutuser' ,[HomeController::class,'logout'])->name('logoutuser');
 Route::get('/productdetail/{id}',[HomeController::class,'productdetail'])->name('productdetail');
 
 
@@ -50,6 +54,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/destroy/{id}','destroy')->name('destroy');
         Route::get('/edit/{id}','edit')->name('edit');
     });
+
+//SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS 
+//SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS 
+//SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS 
+//SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS 
+
+Route::prefix('/settings')->name('settings.')->controller(SettingsController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/edit/{id}','edit')->name('edit');
+    });
+
 //PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT 
 //PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT 
 //PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT PRODUCT 
