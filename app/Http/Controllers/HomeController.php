@@ -115,5 +115,17 @@ class HomeController extends Controller
         return redirect('/');
     }
 
+    public function userprofile()
+    {
+        //
+        
+        $active_slider = DB::table('sliders')->first();
+        $other_slider = Slider::all()->skip(1);
+        $products=Product::all();
+        $settings=Settings::find(1);
+        return view('home.user.profile', ['active_slider' => $active_slider,'other_slider'=>$other_slider,'products'=>$products,'settings'=>$settings]);
+        
+    }
+
     
 }

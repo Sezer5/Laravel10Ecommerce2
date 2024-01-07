@@ -40,8 +40,11 @@ Route::post('/loginadmincheck' ,[AdminHomeController::class,'loginadmincheck'])-
 //ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
 //ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
 //ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
+Route::middleware('auth')->group(function () {
+
 
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function(){
+
    Route::get('/',[AdminHomeController::class,'index'])->name('admin');
    Route::get('/adminlogout',[AdminHomeController::class,'adminlogout'])->name('adminlogout');
    
@@ -119,8 +122,11 @@ Route::prefix('/settings')->name('settings.')->controller(SettingsController::cl
     });
 });
 
+    Route::prefix('user')->name('user.')->group(function(){
+        Route::get('/userprofile' ,[HomeController::class,'userprofile'])->name('userprofile');
 
-
+        });
+});
 
 Route::middleware([
     'auth:sanctum',
