@@ -9,6 +9,7 @@ use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller
 {
@@ -113,4 +114,6 @@ class HomeController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
+
+    
 }

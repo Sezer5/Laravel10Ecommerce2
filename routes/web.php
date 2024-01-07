@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminPanel\UserController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\SliderController;
 use App\Http\Controllers\AdminPanel\ProductController;
@@ -32,15 +33,17 @@ Route::get('/loginuser',[HomeController::class,'loginuser'])->name('loginuser');
 Route::get('/register',[HomeController::class,'register'])->name('register');
 Route::get('/logoutuser' ,[HomeController::class,'logout'])->name('logoutuser');
 Route::get('/productdetail/{id}',[HomeController::class,'productdetail'])->name('productdetail');
+Route::view('/loginadmin', 'admin.loginadmin')->name('loginadmin');
+Route::post('/loginadmincheck' ,[AdminHomeController::class,'loginadmincheck'])->name('loginadmincheck');
 
-
 //ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
 //ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
 //ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
 //ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS ADMIN CONTROLLERS 
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware('admin')->prefix('admin')->name('admin.')->group(function(){
    Route::get('/',[AdminHomeController::class,'index'])->name('admin');
+   Route::get('/adminlogout',[AdminHomeController::class,'adminlogout'])->name('adminlogout');
    
 //CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY
 //CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY CATEGORY
@@ -54,6 +57,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/destroy/{id}','destroy')->name('destroy');
         Route::get('/edit/{id}','edit')->name('edit');
     });
+
+//USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER 
+//USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER 
+//USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER 
+//USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER USER ROLE CONTROLLER 
+
+Route::prefix('/user')->name('user.')->controller(UserController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::post('/store' ,'store')->name('store');
+        Route::get('/destroy/{uid}/{rid}','destroy')->name('destroy');
+    });
+
 
 //SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS 
 //SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS SETTİNGS 

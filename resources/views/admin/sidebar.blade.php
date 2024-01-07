@@ -70,6 +70,11 @@
                 <i class="fa fa-th"></i> <span>Settings</span> <small class="label pull-right bg-green">Hot</small>
               </a>
             </li>            
+            <li>
+              <a href="{{route('admin.user.index')}}">
+                <i class="fa fa-th"></i> <span>Users</span> <small class="label pull-right bg-green">Hot</small>
+              </a>
+            </li>            
           </ul>
         </section>
         <!-- /.sidebar -->
