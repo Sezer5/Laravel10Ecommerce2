@@ -47,13 +47,17 @@
                     <p>{!! $data->keywords !!}</p>
                     <img src="{{ asset('assets') }}/user/images/product-details/rating.png" alt="" />
                     <span>
-                        <span>US $59</span>
+                        <span>US ${{$data->price}}</span>
                         <label>Quantity:</label>
-                        <input type="text" value="3" />
-                        <button type="button" class="btn btn-fefault cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add to cart
-                        </button>
+                        <form action="{{route('shopcart.store')}}" method="post">
+                        @csrf
+                            <input type="text" name="product_id" value="{{$data->id}}" hidden />
+                            <input type="number" name="quantity" value="0" />
+                            <button type="submit" class="btn btn-fefault cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to cart
+                            </button>
+                        </form>
                     </span>
                     <p><b>Availability:</b> In Stock</p>
                     <p><b>Condition:</b> New</p>

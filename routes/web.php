@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopCartController;
 use App\Http\Controllers\AdminPanel\UserController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\SliderController;
@@ -126,6 +127,21 @@ Route::prefix('/settings')->name('settings.')->controller(SettingsController::cl
         Route::get('/userprofile' ,[HomeController::class,'userprofile'])->name('userprofile');
 
         });
+
+    
+
+    Route::prefix('/shopcart')->name('shopcart.')->controller(ShopCartController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/create','create')->name('create');
+        Route::post('/store','store')->name('store');
+        Route::post('/addone','addone')->name('addone');
+        Route::post('/minusone','minusone')->name('minusone');
+        Route::post('/update/{id}','update')->name('update');
+        Route::post('/destroy','destroy')->name('destroy');
+        Route::get('/edit/{id}','edit')->name('edit');
+    });
+
+
 });
 
 Route::middleware([
