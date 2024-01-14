@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="col-sm-12 padding-right">
-        <h2 class="title text-center">Features Items</h2>
+        <h2 class="title text-center">My Orders</h2>
         <section id="cart_items">
             <div class="container">
                 <div class="breadcrumbs">
@@ -18,90 +18,33 @@
                     <table class="table table-condensed">
                         <thead>
                             <tr class="cart_menu">
-                                <td class="image">Item</td>
-                                <td class="description">Name</td>
-                                <td class="price">Price</td>
-                                <td class="quantity">Quantity</td>
-                                <td class="total">Total</td>
-                                <td></td>
+                                <td class="image">Name</td>
+                                <td class="description">E-mail</td>
+                                <td class="price">Total</td>
+                                <td class="quantity">Status</td>
+                                <td>View</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                                $total = 0;
-                            @endphp
-                            @foreach ($cart_items as $rs)
+                            @foreach ($orders as $rs)
                                 <tr>
-                                    <td class="cart_product">
-                                        <img src="{{ Storage::url($rs->product->image) }}" style="width:40px">
+                                    <td class="cart_description">
+                                        {{ $rs->name }}
                                     </td>
                                     <td class="cart_description">
-                                        {{ $rs->product->title }}
+                                        {{ $rs->email }}
                                     </td>
-                                    <td class="cart_price">
-                                        <p>${{ $rs->product->price }}</p>
+                                   <td class="cart_description">
+                                        {{ $rs->total }}
                                     </td>
-                                    <td class="cart_quantity">
-                                        <div class="cart_quantity_button">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <form action="{{ route('shopcart.addone') }}" method="post">
-                                                            @csrf
-                                                            <input type="text" name="product_id"
-                                                                value="{{ $rs->product_id }}" hidden>
-                                                            <button type="submit" class="cart_quantity_up">+</button>
-                                                        </form>
-                                                    </td>
-                                                    <td>
-                                                        <input class="cart_quantity_input" type="text" name="quantity"
-                                                            value="{{ $rs->quantity }}" autocomplete="off" size="2">
-                                                    </td>
-                                                    <td>
-                                                        <form action="{{ route('shopcart.minusone') }}" method="post">
-                                                            @csrf
-                                                            <input type="text" name="product_id"
-                                                                value="{{ $rs->product_id }}" hidden>
-                                                            <button class="cart_quantity_down">-</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-
-                                        </div>
+                                    <td class="cart_description">
+                                        {{ $rs->status }}
                                     </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price">${{ $rs->quantity * $rs->product->price }}</p>
-                                    </td>
-                                    <td class="cart_delete">
-
-                                        <form action="{{ route('shopcart.destroy') }}" method="post">
-                                            @csrf
-                                            <input type="text" name="cart_id" value="{{ $rs->id }}" hidden>
-                                            <button class="cart_quantity_delete"><i class="fa fa-times"></i></button>
-                                        </form>
+                                    <td>
+                                        <a href="{{route('shopcart.orderdetail',['id'=>$rs->id])}}"><button class="btn btn-default update" type="submit">View</button></a>
                                     </td>
                                 </tr>
-                                @php
-                                    $total = $total + $rs->quantity * $rs->product->price;
-                                @endphp
                             @endforeach
-                            <form action="{{route("shopcart.order")}}" method="post">
-                            @csrf
-                            <input type="text" name="total" value="{{$total}}" hidden>
-                            <tr>
-                                <td colspan="3"></td>
-                                <td>
-                                    <p class="cart_total_price">Total</p>
-                                </td>
-                                <td>
-                                    <p class="cart_total_price">${{ $total }}</p>
-                                </td>
-                                <td>
-                                    <button class="btn btn-default update" type="submit">Place Order</button>
-                                </td>
-                            </form>
                             </tr>
                         </tbody>
                     </table>

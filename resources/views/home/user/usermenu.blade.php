@@ -40,7 +40,7 @@
             <div class="brands-name">
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="/user/userprofile"> Profile</a></li>
-                    <li><a href="#"> Orders</a></li>
+                    <li><a href="/shopcart/myorders"> Orders</a></li>
                     <li><a href="#"> Reviews</a></li>
                     
                 </ul>

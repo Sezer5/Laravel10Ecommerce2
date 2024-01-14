@@ -39,7 +39,7 @@
                                     <label for="exampleInputEmail1">Category</label>
                                     <select class="form-control" name="category_id">
                                         <option value="0">Main Category</option>
-                                        @foreach($data as $rs)
+                                       @foreach($data as $rs)
                                             <option value="{{$rs->id}}">{{ \App\Http\Controllers\AdminPanel\ProductController::getParentsTree($rs, $rs->title) }}</option>
                                         @endforeach
                                     </select>

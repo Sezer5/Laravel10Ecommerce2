@@ -139,6 +139,11 @@ Route::prefix('/settings')->name('settings.')->controller(SettingsController::cl
         Route::post('/update/{id}','update')->name('update');
         Route::post('/destroy','destroy')->name('destroy');
         Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/order','order')->name('order');
+        Route::post('/storeorder','storeorder')->name('storeorder');
+        Route::get('/myorders','myorders')->name('myorders');
+        Route::get('/orderdetail/{id}','orderdetail')->name('orderdetail');
+
     });
 
 

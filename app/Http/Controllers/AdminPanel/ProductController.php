@@ -20,13 +20,12 @@ class ProductController extends Controller
     ];
 
      public static  function  getParentsTree($category,$title){
-            $category=Category::find($category);
          if($category->parent_Id == 0){
              return $title;
          }
          $parent = Category::find($category->parent_Id);
          $title = $parent->title . ' > ' .$title;
-         return  CategoryController::getParentsTree($parent,$title);
+         return  ProductController::getParentsTree($parent,$title);
      }
 
 
